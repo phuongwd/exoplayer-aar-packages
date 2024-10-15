@@ -1,23 +1,6 @@
 // exoplayer-smoothstreaming/build.gradle
 
-apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
-
-android {
-    compileSdkVersion 33
-
-    defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 33
-    }
-
-    // Disable building since we're publishing prebuilt AAR
-    publishNonDefault true
-}
-
-dependencies {
-    implementation(name: 'exoplayer-smoothstreaming-2.10.1', ext: 'aar')
-}
 
 publishing {
     publications {
