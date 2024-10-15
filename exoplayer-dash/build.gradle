@@ -1,0 +1,32 @@
+// exoplayer-dash/build.gradle
+
+apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
+
+android {
+    compileSdkVersion 33
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 33
+    }
+
+    // Disable building since we're publishing prebuilt AAR
+    publishNonDefault true
+}
+
+dependencies {
+    implementation(name: 'exoplayer-dash-2.10.1', ext: 'aar')
+}
+
+publishing {
+    publications {
+        aar(MavenPublication) {
+            groupId = 'com.github.phuongwd'
+            artifactId = 'exoplayer-dash'
+            version = '2.10.1'
+
+            artifact file('libs/exoplayer-dash-2.10.1.aar')
+        }
+    }
+}

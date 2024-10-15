@@ -1,0 +1,32 @@
+// exoplayer-core/build.gradle
+
+apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
+
+android {
+    compileSdkVersion 33
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 33
+    }
+
+    // Disable building since we're publishing prebuilt AAR
+    publishNonDefault true
+}
+
+dependencies {
+    implementation(name: 'exoplayer-core-2.10.1', ext: 'aar')
+}
+
+publishing {
+    publications {
+        aar(MavenPublication) {
+            groupId = 'com.github.phuongwd'
+            artifactId = 'exoplayer-core'
+            version = '2.10.1'
+
+            artifact file('libs/exoplayer-core-2.10.1.aar')
+        }
+    }
+}
